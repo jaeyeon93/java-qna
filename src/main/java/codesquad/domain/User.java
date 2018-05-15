@@ -1,5 +1,8 @@
 package codesquad.domain;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,8 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
+    private static final Logger logger = LoggerFactory.getLogger(User.class);
+    
     @Id
     @GeneratedValue
     private Long id;
@@ -52,6 +57,7 @@ public class User {
     }
 
     public void update(User newUser) {
+        logger.debug("updated name is {} email is {}", name, email);
         this.password = newUser.password;
         this.name = newUser.name;
         this.email = newUser.email;
